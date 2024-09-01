@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Loan Application For LOLC Finance PLC</title>
+    <link rel="Stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h2 class="logo">
+            <img class="image-logo" src="./Images/LOGO.png"></h2>
+        <nav class="navigation">
+            <a href="about_us.html">About<span></span></a>
+            <a href="contact_us.html">Contact Us<span></span></a>
+            <button class="btnLogin-popup">Login</button>
+        </nav>
+    </header>
+
+    <div class="wrapper">
+        <span class="icon-close"><ion-icon name="close"></ion-icon></span>
+
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form action="login.php" method="post">
+                <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <input type="email" id="email" name="email" required>
+                <Label for="email">Email</Label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                <input type="password" id="password" name="password" required>
+                <Label for="password">Password</Label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember me</label>
+                    <a href="">Forgot Password</a>
+                </div>
+                <button type="submit" name="lgnsubmit" class="btn">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account?<a href="#" class="register-link">Register</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-box register">
+            
+            <h2>Registration</h2>
+            <form action="register.php" method="post" autocomplete="off">
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
+                <input type="text" name="name" id="name">
+                <Label for="name">Full Name</Label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <input type="email" name="email" id="email">
+                <Label for="email">Email</Label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                <input type="password" name="password" id="password">
+                <Label for="password">Password</Label>
+            </div>
+            <div class="input-box">
+                <select id="user_type" name="user_type">
+                    <option selected value="select">Select User Type</option>
+                    <option value="admin">Admin</option>
+                    <option value="approve_person">Approve Person</option>
+                    <option value="loan_officer">Loan Officer</option>
+                    <option value="user(customer)">User(Customer)</option>
+                    
+                </select>           
+            </div>
+            <div class="remember-forgot">
+                    <label><input type="checkbox" required>I agree to the <a href="terms&conditions.html">Terms & Conditions</a></label>
+            </div>
+            <button type="submit" name="rgssubmit" class="btn">Register</button>
+            <div class="login-register">
+                    <p>Already have an account?<a href="#" class="login-link">Login</a></p>
+            </div>
+            </form>
+        </div>
+    </div>
+
+    
+
+
+    <footer>
+        <section class="secf">    
+            <a class="a1" href="contact_us.html">Contact Us</a> |
+            <a class="a1" href="about_us.html">About Us</a> |
+            <a class="a1" href="terms&conditions.html">Terms & Conditions</a>
+        </section>
+        <p class="ftp">&copy; 2024 LOLC Finance PLC. All Right Reserved</p>
+    </footer>
+
+<script src="script.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+</body>
+</html>

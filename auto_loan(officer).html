@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micro Loan(Officer)</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container1 {   
+            padding-left: 20%;
+            padding-right: 20%;
+            padding-top: 100px;
+            padding-bottom: 75px;
+            margin: 75px 75px 75px 75px;
+            background-color: rgb(145, 151, 156);
+        }
+
+        .container1 h1 {
+            font-size: 40px;
+            color: rgb(0, 0, 0);
+            align-items: center;
+        }
+
+        .container1 h2 {
+            font-size: 30px;
+            color: rgb(0, 0, 0);
+            align-items: center;
+        }
+
+        .container1 p {
+            font-size: 30px;
+            color: rgb(0, 0, 0);
+            align-items: center;
+        }
+
+        .container1 .section-officer form {
+            width: 100%;
+            height: auto;
+            background: transparent;
+            border: 2px solid rgba(0, 128, 0, 0);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 30px grey;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: transform .4s ease, height .2s ease;
+            width: 100%; 
+            padding: 40px;
+            margin: auto;
+            box-sizing: border-box;
+        }
+
+        .container1 .section-officer label {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .container1 .section-officer input, 
+        .container1 .section-officer textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 18px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .container1 .section-officer button {
+            border: none;
+            width: 50%;
+            outline: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 500;
+            color: white;
+            background: rgb(0, 0, 0);
+            padding: 10px;
+            text-align: center;
+            display: block;
+            margin: auto;
+        }
+
+        .container1 .section-officer button:hover {
+            background-color: #45a049;
+            transition: 0.5s ease;
+        }
+
+        @media(max-width: 700px) {
+            .container1 .section-officer form {
+                width: 90%; 
+            }
+
+            .container1 .section-officer button {
+                width: 100%;
+            }
+        }
+    </style>
+    <script>
+        function calculateInstallment() {
+            const loanAmount = parseFloat(document.getElementById('loan_amount').value);
+            const interestRate = parseFloat(document.getElementById('interest_rate').value) / 100 / 12;
+            const repaymentPeriod = parseInt(document.getElementById('repayment_period').value) * 12;
+
+            if (!isNaN(loanAmount) && !isNaN(interestRate) && !isNaN(repaymentPeriod) && repaymentPeriod > 0) {
+                const installment = (loanAmount * interestRate * Math.pow(1 + interestRate, repaymentPeriod)) / (Math.pow(1 + interestRate, repaymentPeriod) - 1);
+                document.getElementById('installment').value = installment.toFixed(2);
+            } else {
+                document.getElementById('installment').value = '';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('loan_amount').addEventListener('input', calculateInstallment);
+            document.getElementById('interest_rate').addEventListener('input', calculateInstallment);
+            document.getElementById('repayment_period').addEventListener('input', calculateInstallment);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h2 class="logo">
+            <img class="image-logo" src="./Images/LOGO.png" alt="Logo">
+        </h2>
+        <nav class="navigation">
+            <a href="loan_officer_page.html">Home<span></span></a>
+            <a href="faq&help_center.html">FAQ & Help Center<span></span></a>
+            <a href="about_us.html">About<span></span></a>
+            <a href="contact_us.html">Contact Us<span></span></a>
+            <a href="index.html">Logout<span></span></a>
+        </nav>
+    </header>
+
+    <div class="container1">
+
+        <div class="view">
+            <h2>Applied Auto Loans</h2><br>
+            <p>
+                <a href="view_autoloan.php">View Loans</a>
+                <br>
+            </p>
+        </div>
+        <br>
+
+        <h1>Loan Recommendation Form</h1><br>
+        <!-- Officer Section -->
+        <div id="officer-section" class="section-officer">
+            <h2>Officer Information</h2>
+            <form action="officer_submission(auto).php" method="POST">
+
+                <label for="id">Appraisal ID:</label>
+                <input type="text" id="id" name="id" required><br>
+
+                <label for="loan_amount">Loan Amount:</label>
+                <input type="number" id="loan_amount" name="loan_amount" required><br>
+
+                <label for="interest_rate">Interest Rate (%):</label>
+                <input type="number" id="interest_rate" name="interest_rate" required><br>
+
+                <label for="repayment_period">Repayment Period (years):</label>
+                <input type="number" id="repayment_period" name="repayment_period" required><br>
+
+                <label for="installment">Installment Amount:</label>
+                <input type="number" id="installment" name="installment" required readonly><br>
+
+                <label for="recommendation">Recommendation:</label>
+                <textarea id="recommendation" name="recommendation" rows="4" required></textarea><br>
+
+                <label for="officer">Officer Name & ID:</label>
+                <textarea id="officer" name="officer" rows="2" required></textarea><br>
+
+                <button type="submit">Submit</button>
+
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>
